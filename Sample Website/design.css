@@ -1,0 +1,44 @@
+body
+{
+	margin: 0px;
+}
+.blue
+{
+background-color: blue;
+color: white;
+width:100%;
+width: 100%;
+height:30px;
+padding:30px;
+}
+p
+{
+	margin-right: 80px;
+}
+header
+{
+background-color:orange;
+padding:30px;
+width:100%;
+height:30px;
+}
+section
+{
+background-color:pink;
+padding:30px;
+width:100%;
+height:auto;
+}
+
+footer
+{
+text-align:center;
+background-color:Dodgerblue;
+width:100%;
+height:auto;
+}
+
+.border
+{
+border:5px solid red;
+}

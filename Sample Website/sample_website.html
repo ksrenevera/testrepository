@@ -1,0 +1,60 @@
+<html>
+
+   <head>
+   
+     <link rel="stylesheet" href="design.css">
+     
+     <script src="jquery-3.3.1.js"></script>
+     
+     <script>
+     
+     $(document).ready(function(){
+     
+        $("header").click(function(){
+        
+           $("header").toggleClass("blue");
+        
+        });
+        
+        $("section").click(function(){
+        
+           $("p").toggle();
+        
+        });
+        
+        
+        $("footer").click(function(){
+        
+           $("img").toggleClass("border");
+        
+        });
+     
+     });
+     
+     </script>
+   
+   </head>
+
+   <body>
+     
+     <header>
+       THE HEADER
+     </header>
+     
+     <section>
+     <p>
+      GitHub is a web-based platform that leverages the power of Git, a distributed version control system, to facilitate software development and collaboration. It allows developers to host and review code, manage projects, and build software alongside millions of other developers. At its core, GitHub provides a repository hosting service, offering both public and private repositories, where users can store and manage their code. This makes it an essential tool for version control, enabling teams to track changes to their codebase, revert to previous versions, and collaborate on projects efficiently.     </p>
+     <P>
+      One of GitHub's standout features is its social coding aspect. It supports collaboration by allowing multiple contributors to work on a single project simultaneously. Developers can fork repositories, make changes, and submit pull requests to suggest improvements or fixes, which repository maintainers can review and merge. This fosters an open-source community where developers can contribute to projects, share their work, and learn from others. GitHub also integrates with numerous third-party services, such as continuous integration and deployment tools, enhancing the overall development workflow.     </P>
+     <P>
+      Additionally, GitHub offers a range of tools and features to support project management and documentation. Issues and project boards help teams plan and track their work, while wikis and README files provide essential documentation and context for users and contributors. GitHub Actions allows for automated workflows, from testing and deployment to CI/CD pipelines, making it easier to manage and scale projects. As a result, GitHub has become a central hub for code sharing and collaboration, playing a crucial role in the development of modern software projects.
+      </P>
+     </section>
+     
+     <footer>
+     <img src="img.jpg">
+     </footer>
+     
+   </body>
+
+</html>
