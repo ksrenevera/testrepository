@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<script src="jquery-3.3.1.js"></script>
+
+		<script type="text/javascript">
+			
+			$(document).ready(function()			{
+
+				$(".creator").hide();
+				//for hide button (element)
+				$("#hideButton").click(function() 	{
+						$("h1").hide(1000);
+					});
+				//for show button
+				$("#showButton").click(function() 	{
+						$("h1").show();
+					});
+				//for X Sayori (id)
+				$("#delSayori").click(function() 	{
+						$("#favorite, #sayori").hide(1000);
+					});
+				//for X Natsuki (id)
+				$("#delNatsuki").click(function() 	{
+						$("#secFavorite, #natsuki").hide(1000);
+					});
+				//for X Yuri (class)
+				$("#delYuri").click(function() 	{
+						$(".iHateYou, #yuri").hide(1000);
+					});
+				//for Now you see me (current element)
+				$("#close").click(function() 	{
+						$("div").fadeOut(2000, function(){
+							$(".creator").fadeIn(8000);
+						});	
+
+					});
+
+				$(".final").click(function() 	{
+						$(this).hide(1000, function()
+							{
+								$("div").show(1000);
+							});
+					});
+
+				$(".everything").click(function() 	{
+						$("*").hide(1000);
+					});
+
+			});
+
+		</script>
+
+		<!--I'm just adding some design :)-->
+		<style type="text/css">
+
+			h1,b,h2
+			{
+				font-family: gloss and bloom;
+			}
+			input
+			{
+				height: 30px;
+				width: 150px;
+				background-color: yellow;
+				border-radius: 10px;
+				cursor: pointer;
+				font-family: Arial;
+				border:0px;
+			}
+			input:hover
+			{
+				background-color: pink;
+			}
+			h2
+			{
+				font-size:50px;
+				background-color: #f7e2e4;
+				border-radius: 10px;
+			}
+			b
+			{
+				font-size: 40px;
+				padding-left: 35px;
+				padding-right: 60px;
+				color: black;
+				text-shadow: 3px 2px white;
+
+			}
+			#monika
+			{
+				width:500px;
+				height:auto;
+				cursor: pointer;
+			}
+			img
+			{
+				width: 250px;
+				height: auto;
+				background-color:#f0dcdf;
+				border-radius: 10px;
+			}
+			.everything
+			{
+				text-decoration: none;
+				color: black;
+				text-shadow: 3px 2px red;
+			}
+			
+			
+
+		</style>
+
+		<title>	
+
+		</title>
+
+	</head>
+
+	
+		<body background="bgimage.jpg">
+	
+
+		<!--HTML Content-->
+		
+		<center><a href="#" class="everything"><h2>Dokidoki Literature Club</h2></a></center>
+
+<center>
+		<a href="#" class="final">
+		<img src="justmonika.png" class="creator" id="monika">
+		</a>
+<div>
+	<!--ID and Class for the Selectors-->
+	<img src="sayori.png" id="sayori">
+	<img src="natsuki.png" id="natsuki">
+	<img src="yuri.png" id="yuri">
+
+	
+
+	<br>
+	<br>
+	<b id="favorite">|Sayori|</b>
+	<b id="secFavorite">|Natsuki|</b>
+
+	<b class="iHateYou">|Yuri|</b>
+<br>
+<br>
+	<!--buttons for the three girls-->
+	<input type="button" id="delSayori" value="X Sayori">
+	<input type="button" id="delNatsuki" value="X Natsuki">
+	<input type="button" id="delYuri" value="X Yuri">
+<br>
+<br>
+<br>
+	<input type="button" id="close" value="JUST MONIKA">
+</div>
+</center>
+
+
+		
+	</body>
+
+</html>
+
