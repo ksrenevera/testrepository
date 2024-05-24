@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html>
+
+<center>
+
+</center>
+
+	<head>
+
+		<!-- jquery -->
+		<script src="jquery-3.3.1.js"></script>
+
+		<script type="text/javascript">
+
+			// var playerName = "PLAYER 1";
+			
+			var back = false;
+			var leveltable = "";
+
+			$(document).ready(function(){
+
+				$(".gameWindow").hide();
+				$("#pauseIt").hide();
+				$("#resumeIt").hide();
+				$("#changeIt").hide();
+				$(".easyLeaderboard").hide();
+				$("#backtoGame").hide();
+				$(".mediumLeaderboard").hide();
+				$(".hardLeaderboard").hide();
+
+				$(".howToPlay").hide();
+
+				$(".chooseLevel").hide();
+
+				$(".gamePaused").hide();
+
+
+
+				$("#playNow").click(function(){
+
+						$(".gameWindow").show(1000);
+						$(".sideBar").hide(1000);
+						// $("#pauseIt").fadeIn(1000);
+						// $("#resumeIt").fadeIn(1000);
+						// $("#changeIt").fadeIn(1000);
+						$(".easyLeaderboard").hide();
+						$(".gameDescription").hide();
+
+
+						back = true;
+
+				});
+
+
+				$("#playNow2").click(function(){
+
+						$(".gameWindow").show(1000);
+						$(".sideBar").hide(1000);
+						// $("#pauseIt").fadeIn(1000);
+						// $("#resumeIt").fadeIn(1000);
+						$(".easyLeaderboard").hide();
+						$(".gameDescription").hide();
+
+
+						back = true;
+
+
+				});
+
+				$("#home").click(function(){
+
+					$(".gameDescription").fadeIn(1000);
+					$(".easyLeaderboard").hide();
+					$(".mediumLeaderboard").hide();
+					$(".hardLeaderboard").hide();
+					$("#pauseIt").hide();
+					$("#resumeIt").hide();
+					$("#changeIt").hide();
+					$(".gameWindow").hide();
+
+
+					if (back)
+					{
+						$("#backtoGame").fadeIn(1000);
+					}
+					
+				});
+
+				$("#leaderboard").click(function(){
+
+						$(".gameWindow").hide();
+						$(".easyLeaderboard").fadeIn(1000);
+						$(".mediumLeaderboard").hide();
+						$(".hardLeaderboard").hide();
+						$("#pauseIt").hide();
+						$("#resumeIt").hide();
+						$("#changeIt").hide();
+						$(".gameDescription").hide();
+						$("#pauseIt").fadeOut(1000);
+						$("#resumeIt").fadeOut(1000);
+
+						if (back)
+						{
+							$("#backtoGame").fadeIn(1000);
+						}
+
+						if (playerName !="")
+						{
+							if (difficultySpeed ==8)
+							{
+								leveltable = "#easyTable";
+								changeData();
+							}
+							else if (difficultySpeed == 11)
+							{
+								leveltable = "#mediumTable";
+								changeData();
+							}
+							else if (difficultySpeed == 14)
+							{
+								leveltable = "#hardTable";
+								changeData();
+							}
+						}
+				});
+
+				$("#nameInput").keyup(function(){
+
+						playerName = $("#nameInput").val();
+
+				});
+
+				$("#letsPlay").click(function(){
+
+						if($("#nameInput").val() == "")
+						{
+							$("#response").html("Please Input a Name");
+						}
+						else
+						{	
+
+							$(".namePromptBG").hide();
+							$(".chooseLevel").show();
+
+						}
+
+				});	
+// ------------------------------------------------------------
+				$("#describe").click(function(){
+
+					$(".howToPlay").hide();
+					$(".description").fadeIn(1000);
+
+
+				});
+
+				$("#instruct").click(function(){
+
+					$(".description").hide();
+					$(".howToPlay").fadeIn(1000);
+					
+//
+				});
+// ------------------------------------------------------------------
+				$("#easy").click(function(){
+
+						difficultySpeed = 8;
+						paddleColor = "#3584f5";
+						$(".chooseLevel").hide();
+						$("#changeIt").fadeIn(1000);
+						$("#pauseIt").fadeIn(1000);
+						$("#resumeIt").fadeIn(1000);
+				});
+
+				$("#medium").click(function(){
+
+						difficultySpeed = 11;
+						paddleColor = "#eede26";
+						$(".chooseLevel").hide();
+						$("#changeIt").fadeIn(1000);
+						$("#pauseIt").fadeIn(1000);
+						$("#resumeIt").fadeIn(1000);
+				});
+
+				$("#hard").click(function(){
+
+						difficultySpeed = 14;
+						paddleColor="#d70c11";
+						$(".chooseLevel").hide();
+						$("#changeIt").fadeIn(1000);
+						$("#pauseIt").fadeIn(1000);
+						$("#resumeIt").fadeIn(1000);
+				});
+
+				$("#backtoGame").click(function(){
+
+						$(".gameWindow").fadeIn(1000);
+						$(".sideBar").hide(1000);
+						$("#pauseIt").fadeIn(1000);
+						$("#resumeIt").fadeIn(1000);
+						$("#changeIt").fadeIn(1000);
+						$(".gameDescription").hide();
+						$("#backtoGame").hide();
+						$(".easyLeaderboard").hide();
+						$(".mediumLeaderboard").hide();
+						$(".hardLeaderboard").hide();
+						
+				});
+// -----------------------------------------------------------------------------------
+				$("#nextTable").click(function(){
+
+					$(".easyLeaderboard").hide();
+					$(".mediumLeaderboard").fadeIn(1000);
+
+				});
+
+				$("#prevTable").click(function(){
+
+					$(".easyLeaderboard").fadeIn(1000);
+					$(".mediumLeaderboard").hide();
+
+				});
+
+				$("#nextTable2").click(function(){
+
+					$(".hardLeaderboard").fadeIn(1000);
+					$(".mediumLeaderboard").hide();
+
+				});
+
+				$("#prevTable2").click(function(){
+
+					$(".mediumLeaderboard").fadeIn(1000);
+					$(".hardLeaderboard").hide();
+
+				});
+
+				$("#pauseIt").click(function(){
+
+					$(".gamePaused").show();
+				});
+
+				$("#resumeIt").click(function(){
+
+					$(".gamePaused").hide();
+				});
+
+				$("#changeIt").click(function(){
+
+					$(".gamePaused").hide();
+					$(".namePromptBG").show();
+
+				});
+
+				function changeData()
+				{
+					$(leveltable + " tr:last").remove();
+					$(leveltable).append("<tr><td>"+playerName+"</td><td>"+totalWins+"</td><td>"+pointsWon+"</td><td>"+pointsLost+"</td></tr>");
+
+				}
+
+			});
+
+		</script>
+
+		<!--design css-->
+		<link rel="stylesheet" type="text/css" href="design.css"></link>
+
+		<title>
+				Cube Games: Tennis 2D
+		</title>
+
+	</head>
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
+	<body>
+			 <!-- HEADER -->
+		<header>
+			<!-- title -->
+			<div class="title">
+				<b>CUBE GAMES</b>
+			</div>
+
+			<div class="logo">
+				<img src="cube.png" id="cube">
+			</div>
+
+			<!-- first buttons -->
+			<div class="options">
+				<button id="home">Home</button>
+				<button id="leaderboard">Leaderboard</button>
+				
+			</div>
+
+			<!-- controls -->
+			<div class="gameControls">
+				<button id="changeIt" onclick="pauseTheGame()">Change Settings</button>
+				<button id="pauseIt" onclick="pauseTheGame()">Pause</button>
+				<button id="resumeIt" onclick="resumeTheGame()">Resume</button>
+				<button id="backtoGame">Back to Game</button>
+
+			</div>
+
+		</header>
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+			<!-- MAIN CONTENT -->
+
+	
+
+<!-- ---------------------------------------------------------- -->
+
+	<!-- <div class="section"> -->
+		
+		<div class="gameDescription">
+
+			<div class="description">
+
+				<div class="gameTitle">
+					<center>
+						Cube Games Presents
+						<br>
+						<b id="mainTitle">"TENNIS 2D"</b>
+					</center>
+				</div>
+
+				<div class="info">
+
+					<div class="firstP">
+						Do you have what it takes to <b>WIN?</b>
+						<br>
+						Play "Tennis 2D" now to test your skills and prowess!
+					</div>
+
+					<div class="pic1"><img src="gameView.png" id="pic1"></div>
+
+					<div class="pic2"><img src="gameView2.png" id="pic1"></div>
+
+					<div class="secP">
+						Play a <b>Best-of-Three</b> Tennis game against a <b>Computer</b>.
+					</div>
+
+					<div class="thirdP">
+						Choose from three(3) different <b>levels of difficulty.</b>
+					</div>
+				
+					<div class="pic3"><img src="chooseDiff.png" id="pic1"></div>
+
+					<div class="pic3"><img src="leaderboard.png" id="pic1"></div>
+
+					<div class="fourthP">
+						Reach the top of the <b>Leaderboards.</b>
+					</div>
+
+				</div>
+
+				<div class="theButton">
+					<center>
+					<button id="playNow">Let's Play!</button>
+					</center>
+				</div>
+
+			</div>
+<!-- -------------------------------------------------------------------- -->
+
+			<div class="howToPlay">
+				Here's how to play:
+				<div class="instructionText">
+		
+					<div class="thisOne">
+					<p>
+						1. Enter your name or In-Game Name (IGN).
+					</p>
+					</div>
+
+					<div class="pic1"><img src="enterName.png" id="pic1"></div>
+
+					<div class="thisOne">
+					<p>
+						2. Choose a difficulty level to play against.
+					</p>
+					</div>
+
+					<div class="pic3"><img src="chooseDiff.png" id="pic1"></div>
+
+					<div class="thisOne">
+					<p>
+						3. Use mouse or touchpad to control your paddle.
+					</p>
+					</div>
+
+					<div class="pic1"><img src="gameView.png" id="pic1"></div>
+
+					<div class="thisOne">
+					<p>
+						4. Don't let the ball pass through your wall.
+					</p>
+					</div>
+
+					<div class="pic1"><img src="dontPass.png" id="pic1"></div>
+					
+					<div class="thisOne">
+					<p>
+						5. Earn points by making the ball touch the opponent's wall.
+					</p>
+					</div>
+
+					<div class="pic1"><img src="earnPoints.png" id="pic1"></div>
+
+					<div class="thisOne">
+					<p>
+						6. The first player to reach 3 points wins!
+					</p>
+					</div>
+
+					<div class="pic1"><img src="computerWins.png" id="pic1"></div>
+
+					<div class="thisOne">
+					<p>
+						7. Enjoy!
+					</p>
+					</div>
+
+					<div class="enjoy"><img src="enjoy.jpg" id="pic1"></div>
+
+				</div>
+
+				<div class="theButton">
+					<center>
+					<button id="playNow2">Let's Play!</button>
+					</center>
+				</div>
+
+			</div>
+			
+<!-- ----------------------------------------------------- -->
+			<div class="instruction">
+			
+				<center>
+					
+					<button id="describe">Description</button>
+
+					<br>
+					<br>
+					<br>
+
+					<button id="instruct">How To Play</button>
+
+				</center>	
+				
+			</div>
+			
+		</div>
+		
+<!-- ---------------------------------------------------------------------------------------------------------- -->
+			<!-- DIVISION OF GAME -->
+		<div class="gameWindow">
+
+			<!-- IGN prompt -->
+			<div class="namePromptBG">
+				<b id="enterName">ENTER YOUR NAME</b>
+				<input type="text" id="nameInput" maxlength="8">
+				<img src="translucentBG.png" id="theBG">
+				<button id="letsPlay">Next -></button>
+				<text id="response"></text>
+			</div>
+			<!-- ----------------------------------------------------------------------- -->
+			<!-- choose a level -->
+			<div class="chooseLevel">
+
+					<img src="translucentBG.png" id="theBG">
+					<b id="chooseOne">Choose A Difficulty</b>
+					<button id="easy">Ezeey Peezy</button>
+					<button id="medium">Not That Bad</button>
+					<button id="hard">What The Heck?</button>
+
+			</div>
+			<!-- ------------------------------------------------------------------------------- -->
+
+			<div class="gamePaused">
+				
+				<b id="screenPause">Game Paused</b>
+				<img src="translucentBG.png" id="theBG">
+
+			</div>
+
+			<!-- --------------------------------------------------------------------- -->
+			<canvas id="gameCanvas" width="1000" height="600" class="theGame"></canvas>
+			<!-- tennis game script -->
+			<script type="text/javascript" >
+								var canvas;
+								var canvasContext;
+
+								//ball speed and reset
+								var ballX = 200;
+								var ballSpeedX =14;
+								var ballY = 120;
+								var ballSpeedY =5;
+							
+								var paddle1Y = 250;
+								var paddle2Y = 250;
+
+								const PADDLE_HEIGHT = 100;
+								const PADDLE_THICKNESS = 10;
+								const WINNING_SCORE = 3;
+
+								//scores
+								var player1Score = 0;
+								var player2Score = 0;
+
+								var totalWins = 0;
+								var pointsWon = 0;
+								var pointsLost = 0;
+
+								//difficulty level
+								var difficultySpeed;
+								var paddleColor;
+
+								//IGN
+								var playerName = "";
+
+								//who won the game
+								var gameWinScreen = true;
+								var winningPlayer = "Player1 Wins!";
+
+								//pause and resume
+								var pauseGame = false;
+								var resumeGame = false;
+
+
+								//paddle follows mouse
+								function calculateMousePos(evt)
+								{
+									if(pauseGame){
+										return;
+									}
+									
+									var rect = canvas.getBoundingClientRect();
+									var root = document.documentElement;
+									var mouseX = evt.clientX - rect.left - root.scrollLeft;
+									var mouseY = evt.clientY - rect.top - root.scrollTop;
+
+									return {
+										x:mouseX,
+										y:mouseY
+									
+									};
+								}
+								
+								
+
+								//executes the game
+								window.onload = function() 
+								{
+										canvas = document.getElementById('gameCanvas');
+										canvasContext = canvas.getContext('2d');
+
+										//motion part per frame
+										var framePerSecond = 30;
+										setInterval(function() {drawEverything(); moveBall();}, 1000/framePerSecond);
+
+										//for resetTheGame()
+										canvas.addEventListener('mousedown', resetTheGame);
+										//for paddle movemet
+										canvas.addEventListener('mousemove', 
+											function(evt)
+											{
+												var mousePos = calculateMousePos(evt);
+												paddle1Y = mousePos.y - (PADDLE_HEIGHT-100);
+											});
+										
+								}
+								// Resets position of the ball
+								function ballReset()
+								{
+									if (player1Score >= WINNING_SCORE || player2Score >= WINNING_SCORE)
+									{
+
+										gameWinScreen = true;
+									}
+
+									ballSpeedX = 10;
+									ballSpeedY = 3;
+
+									ballX = canvas.width/2;
+									ballY = canvas.height/2;
+
+								}
+
+								// AI codeblock
+								function computerPaddleMove()
+								{
+									
+
+									var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
+									if (paddle2YCenter < ballY-35)
+									{
+										paddle2Y += difficultySpeed;
+									}
+									else if (paddle2YCenter > ballY+35)
+									{
+										paddle2Y -= difficultySpeed;
+									}
+
+									
+								}
+
+								//motion of ball
+								function moveBall()
+								{
+									if(pauseGame){
+										return;
+									}
+
+
+									//after winning
+									if (gameWinScreen == true)
+									{
+										return;
+									}
+
+									computerPaddleMove();
+
+									ballX = ballX + ballSpeedX;
+									ballY = ballY + ballSpeedY;
+
+									//motion side to side
+									if (ballX > canvas.width)
+									{
+										if (ballY > paddle2Y && ballY < paddle2Y+PADDLE_HEIGHT)
+										{
+											ballSpeedX = -ballSpeedX;
+
+											var ballControl = ballY - (paddle2Y+PADDLE_HEIGHT/2);
+
+											ballSpeedY = ballControl * 0.40;
+										}
+										else{
+											player1Score++;
+											pointsWon++;
+											if(player1Score == WINNING_SCORE)
+											{
+												totalWins++;
+											}
+											ballReset();
+										}
+									}
+
+									//reaches left side
+									if (ballX < 0)
+									{
+										if (ballY > paddle1Y && ballY < paddle1Y+PADDLE_HEIGHT)
+										{
+											ballSpeedX = -ballSpeedX;
+
+											var deltaY = ballY - (paddle1Y+PADDLE_HEIGHT/2);
+
+											ballSpeedY = deltaY * 0.35;
+										}
+										else{
+											player2Score++;
+											pointsLost++;
+											ballReset();
+											
+										}
+										
+									}
+									//motion up and down
+									if (ballY > canvas.height)
+									{
+										ballSpeedY = -ballSpeedY;
+									}
+
+									if (ballY < 0)
+									{
+										ballSpeedY = -ballSpeedY;
+									}
+
+									
+								}
+
+								//stuff on the screen
+								function drawEverything()
+								{
+									
+									//background
+									canvasContext.fillStyle = '#cbd1ca';
+									canvasContext.fillRect(0,0,canvas.width,canvas.height);
+
+									//after winning
+									if (gameWinScreen)
+									{
+										canvasContext.fillStyle = 'black';
+
+										if (player1Score >= WINNING_SCORE){
+
+											canvasContext.fillText(playerName + " Wins!", canvas.width/2-60,250);
+
+										}
+
+										else if (player2Score >= WINNING_SCORE)
+										{
+											canvasContext.fillText("Computer Wins!", canvas.width/2-60,250);
+										}
+										canvasContext.font = "30px Calibri";
+										canvasContext.fillText("Tennis 2D", canvas.width/2-60,200);
+										canvasContext.font = "18px Calibri";
+										canvasContext.fillText("Click Anywhere to Start", canvas.width/2-85,300);
+										return;
+									}
+									//the net
+									drawNet();
+
+									//the ball
+									canvasContext.fillStyle = '#f52f2f';
+									canvasContext.beginPath();
+									canvasContext.arc(ballX, ballY, 10, 0, Math.PI*2, true);
+									canvasContext.fill();
+
+									//left paddle
+									canvasContext.fillStyle = '#1c1c1c';
+									canvasContext.fillRect(0,paddle1Y,PADDLE_THICKNESS,PADDLE_HEIGHT);
+
+									//right paddle
+									canvasContext.fillStyle = paddleColor;
+									canvasContext.fillRect(canvas.width-10,paddle2Y,PADDLE_THICKNESS,PADDLE_HEIGHT);
+
+									//Names and Scores
+									canvasContext.fillStyle = '#1c1c1c';
+									canvasContext.font = "18px Calibri";
+									canvasContext.fillText(playerName, 175,70);
+									canvasContext.fillText(player1Score, 200,100);
+									canvasContext.fillText("COMPUTER", canvas.width-255,70);
+									canvasContext.fillText(player2Score, canvas.width-220,100);
+								}
+
+								//the net
+								function drawNet()
+								{
+									for (var i = 0; i < canvas.height; i+=50)
+									{
+										canvasContext.fillStyle = 'black';
+										canvasContext.fillRect(canvas.width/2-1,i,2,25);
+									}
+								}
+
+
+								//Start new Game
+								function resetTheGame()
+								{
+
+									if (gameWinScreen == true)
+									{
+										
+										player1Score = 0;
+										player2Score = 0;
+										gameWinScreen = false;
+									}
+								}
+
+								//shows the winner 
+								function displayWinner()
+								{
+									if(player1Score = WINNING_SCORE){
+										return;
+									} else {
+										winningPlayer = "Computer Wins!";
+									}
+									canvasContext.fillStyle = 'white';
+									canvasContext.fillText(winningPlayer, 375,250);
+								}
+
+								function pauseTheGame()
+								{
+									pauseGame = true;
+								}
+
+								function resumeTheGame(evt)
+								{
+									pauseGame = false;
+									moveBall();
+									calculateMousePos();
+								}
+			</script>
+
+		</div>
+
+	</div>
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+	<div class="easyLeaderboard">
+
+		<center>
+
+			<b id="tableLevel">Eezey Peezy</b>
+			<!-- <button id="nextTable">>></button> --> 
+			<img src="arrowRight.png" id="nextTable">
+
+			<br>
+			<br>
+
+			<table id="easyTable">
+				
+			<tr>
+				
+				<th rowspan="2" id="IGN">IGN</th>
+			
+				<th colspan="3">Record</th>
+			
+			</tr>
+			
+			<tr>
+				
+				<th>Number of Wins</th>
+			
+				<th>Total Points Won</th>
+			
+				<th>Total Points Lost</th>
+			
+			</tr>
+
+			<tr>
+				
+				<td>Steven</td>
+				<td>100</td>
+				<td>273</td>
+				<td>37</td>
+
+			</tr>
+			<tr>
+				
+				<td>Gidd</td>
+				<td>90</td>
+				<td>261</td>
+				<td>40</td>
+
+			</tr>
+			<tr>
+				
+				<td>Dominic</td>
+				<td>80</td>
+				<td>253</td>
+				<td>46</td>
+
+			</tr>
+			<tr>
+				
+				<td>Nico</td>
+				<td>70</td>
+				<td>249</td>
+				<td>51</td>
+
+			</tr>
+			<tr>
+				
+				<td>Derick</td>
+				<td>60</td>
+				<td>242</td>
+				<td>57</td>
+
+			</tr>
+			<tr>
+				
+				<td>Rhea</td>
+				<td>50</td>
+				<td>237</td>
+				<td>59</td>
+
+			</tr>
+			<tr>
+				
+				<td>Third</td>
+				<td>40</td>
+				<td>231</td>
+				<td>65</td>
+
+			</tr>
+			
+			
+			</table>
+		</center>
+			
+	</div>
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
+	
+	<div class="mediumLeaderboard">
+
+				<center>
+
+					<!-- <button id="prevTable"><<</button> -->
+					<img src="arrowLeft.png" id="prevTable">
+					<b id="tableLevel">Not That Bad</b>
+					<img src="arrowRight.png" id="nextTable2">
+					<!-- <button id="nextTable2">>></button> -->
+
+					<br>
+					<br>
+
+					<table id="mediumTable">
+						
+					<tr>
+						
+						<th rowspan="2" id="IGN">IGN</th>
+					
+						<th colspan="3">Record</th>
+					
+					</tr>
+					
+					<tr>
+						
+						<th>Number of Wins</th>
+					
+						<th>Total Points Won</th>
+					
+						<th>Total Points Lost</th>
+					
+					</tr>
+
+					<tr>
+				
+				<td>Steven</td>
+				<td>100</td>
+				<td>273</td>
+				<td>37</td>
+
+			</tr>
+			<tr>
+				
+				<td>Gidd</td>
+				<td>90</td>
+				<td>261</td>
+				<td>40</td>
+
+			</tr>
+			<tr>
+				
+				<td>Dominic</td>
+				<td>80</td>
+				<td>253</td>
+				<td>46</td>
+
+			</tr>
+			<tr>
+				
+				<td>Nico</td>
+				<td>70</td>
+				<td>249</td>
+				<td>51</td>
+
+			</tr>
+			<tr>
+				
+				<td>Derick</td>
+				<td>60</td>
+				<td>242</td>
+				<td>57</td>
+
+			</tr>
+			<tr>
+				
+				<td>Rhea</td>
+				<td>50</td>
+				<td>237</td>
+				<td>59</td>
+
+			</tr>
+			<tr>
+				
+				<td>Third</td>
+				<td>40</td>
+				<td>231</td>
+				<td>65</td>
+
+			</tr>
+					
+					
+					</table>
+				</center>
+		
+	</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+
+	<div class="hardLeaderboard">
+		
+		<center>
+
+			<!-- <button id="prevTable2"><<</button> -->
+			<img src="arrowLeft.png" id="prevTable2">
+			<b id="tableLevel">What the Heck?</b>
+
+			<br>
+			<br>
+
+			<table id="hardTable">
+				
+			<tr>
+				
+				<th rowspan="2" id="IGN">IGN</th>
+			
+				<th colspan="3">Record</th>
+			
+			</tr>
+			
+			<tr>
+				
+				<th>Number of Wins</th>
+			
+				<th>Total Points Won</th>
+			
+				<th>Total Points Lost</th>
+			
+			</tr>
+
+<tr>
+				
+				<td>Steven</td>
+				<td>100</td>
+				<td>273</td>
+				<td>37</td>
+
+			</tr>
+			<tr>
+				
+				<td>Gidd</td>
+				<td>90</td>
+				<td>261</td>
+				<td>40</td>
+
+			</tr>
+			<tr>
+				
+				<td>Dominic</td>
+				<td>80</td>
+				<td>253</td>
+				<td>46</td>
+
+			</tr>
+			<tr>
+				
+				<td>Nico</td>
+				<td>70</td>
+				<td>249</td>
+				<td>51</td>
+
+			</tr>
+			<tr>
+				
+				<td>Derick</td>
+				<td>60</td>
+				<td>242</td>
+				<td>57</td>
+
+			</tr>
+			<tr>
+				
+				<td>Rhea</td>
+				<td>50</td>
+				<td>237</td>
+				<td>59</td>
+
+			</tr>
+			<tr>
+				
+				<td>Third</td>
+				<td>40</td>
+				<td>231</td>
+				<td>65</td>
+
+			</tr>
+			
+			
+			</table>
+		</center>
+
+	</div>
+
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------- -->
+		<!-- COPYRIGHT -->
+	<footer>
+		Copyright &copy Tennis Right
+	</footer>
+
+
+	</body>
+
+
+</html>
